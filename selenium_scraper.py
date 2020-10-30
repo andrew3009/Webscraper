@@ -39,7 +39,7 @@ def checkoutLoop():
     pre.click()
     print('Added to Basket')
     
-    checkout = WebDriverWait(driver, 20).until(
+    checkout = WebDriverWait(driver, 60).until(
       EC.presence_of_element_located((By.CLASS_NAME, "secure-checkout"))
     )
     checkout.click()
