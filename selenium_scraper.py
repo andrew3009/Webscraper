@@ -40,7 +40,7 @@ def checkoutLoop():
     print('Clicked on Basket Link')
 
     checkout = WebDriverWait(driver, 20).until(
-      EC.presence_of_element_located((By.CLASS_NAME, "cta-large"))
+      EC.presence_of_element_located((By.XPATH, "/html/body/div[4]/div[1]/div/div[4]/div/div/a"))
     )
     checkout.click()
     
