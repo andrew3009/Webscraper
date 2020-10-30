@@ -51,7 +51,7 @@ def checkoutLoop():
 
 def loopFunc():
   try:
-    print('1')
+    print('2')
     
     primary = WebDriverWait(driver, 20).until(
       EC.presence_of_element_located((By.ID, "primary"))
