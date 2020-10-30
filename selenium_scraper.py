@@ -45,7 +45,11 @@ def checkoutLoop():
     
     sleep(3)
     
+    print('after sleep')
+    
     checkout = driver.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[4]/div/div/a')
+    print('did it find checkout')
+    print(checkout.get_attribute("href"))
     checkout.click()
     
     print('Checkout')
