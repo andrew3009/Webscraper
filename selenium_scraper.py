@@ -18,6 +18,20 @@ driver = webdriver.Chrome(executable_path="chromedriver", chrome_options=options
 
 driver.get("https://www.game.co.uk/webapp/wcs/stores/servlet/HubArticleView?langId=44&searchBtn=z&msg=&showResultsPage=true&DM_PersistentCookieCreated=true&sType=SimpleSearch&hubId=2646251&predictiveSearchURL=&resultCatEntryType=2&articleId=2646251&catalogId=10201&pageView=image&searchCount=1&searchTerm=ps5&storeId=10151&beginIndex=0&pageSize=48&ddkey=http%3AAjaxCatalogSearch")
 
+def basketLoop():
+  try:
+    print('In Basket Loop')
+    checkout = WebDriverWait(driver, 20).until(
+      EC.presence_of_element_located((By.CLASS_NAME, "cta-large"))
+    )
+    print('did it find checkout')
+    checkout.click()
+    
+    print('Checkout')
+    print('FINISHED')
+  except:
+    basketLoop()
+
 def checkoutLoop():
   try:
     pre = WebDriverWait(driver, 20).until(
@@ -39,17 +53,7 @@ def checkoutLoop():
     
     print('Clicked on Basket Link')
     
-    sleep(10)
-
-    checkout = WebDriverWait(driver, 20).until(
-      EC.presence_of_element_located((By.CLASS_NAME, "cta-large"))
-    )
-    print('did it find checkout')
-    print(checkout.text)
-    checkout.click()
-    
-    print('Checkout')
-    print('FINISHED')
+    basketLoop()
   except:
     checkoutLoop()
 
