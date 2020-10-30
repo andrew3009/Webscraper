@@ -14,7 +14,7 @@ options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
 options.add_argument('--headless')
 options.add_argument('--remote-debugging-port=9222')
-options.add_argument("--example-flag")
+options.add_argument('window-size=1200x600')
 driver = webdriver.Chrome(executable_path="chromedriver", chrome_options=options)
 
 # chrome_bin = os.environ.get('GOOGLE_CHROME_SHIM', None)
@@ -30,6 +30,23 @@ driver.get("https://www.game.co.uk/webapp/wcs/stores/servlet/HubArticleView?lang
 # search = driver.find_element_by_xpath('//*[@id="search"]')
 # search.send_keys('ps5')
 # search.submit()
+
+def checkoutLoop():
+  try:
+    pre = WebDriverWait(driver, 20).until(
+      EC.presence_of_element_located((By.CLASS_NAME, "addToBasket"))
+    )
+    pre.click()
+    print('Added to Basket')
+    
+    checkout = WebDriverWait(driver, 20).until(
+      EC.presence_of_element_located((By.CLASS_NAME, "secure-checkout"))
+    )
+    checkout.click()
+    print('Checkout')
+    print('FINISHED')
+  except:
+    driver.quit()
 
 def loopFunc():
   try:
@@ -51,22 +68,5 @@ def loopFunc():
     print('Out of Stock')
     driver.refresh()
     loopFunc()
-
-def checkoutLoop():
-  try:
-    pre = WebDriverWait(driver, 20).until(
-      EC.presence_of_element_located((By.CLASS_NAME, "addToBasket"))
-    )
-    pre.click()
-    print('Added to Basket')
-    
-    checkout = WebDriverWait(driver, 20).until(
-      EC.presence_of_element_located((By.CLASS_NAME, "secure-checkout"))
-    )
-    checkout.click()
-    print('Checkout')
-    print('FINISHED')
-  except:
-    driver.quit()
 
 loopFunc()
