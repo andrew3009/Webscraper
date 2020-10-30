@@ -30,6 +30,8 @@ def basketLoop():
     print('Checkout')
     print('FINISHED')
   except:
+    driver.refresh()
+    sleep(3)
     basketLoop()
 
 def checkoutLoop():
