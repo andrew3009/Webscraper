@@ -31,9 +31,10 @@ def checkoutLoop():
     
     print('Page Refreshed')
 
-    basket = WebDriverWait(driver, 20).until(
-      EC.presence_of_element_located((By.ID, "basketLink"))
-    )
+    # basket = WebDriverWait(driver, 20).until(
+    #   EC.presence_of_element_located((By.ID, "basketLink"))
+    # )
+    basket = driver.find_element_by_id('basketLink')
     basket.click()
     
     print('Clicked on Basket Link')
