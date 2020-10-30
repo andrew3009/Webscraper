@@ -42,7 +42,7 @@ def checkoutLoop():
     print(driver.find_elements_by_class_name('purchase-confirmation-modal'))
     print(driver.find_elements_by_class_name('secure-checkout'))
     
-    checkout = WebDriverWait(driver, 60).until(
+    checkout = WebDriverWait(driver, 200).until(
       EC.presence_of_element_located((By.CLASS_NAME, "secure-checkout"))
     )
     print(checkout.text)
