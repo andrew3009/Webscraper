@@ -38,18 +38,14 @@ def checkoutLoop():
     basket.click()
     
     print('Clicked on Basket Link')
+    
+    sleep(10)
 
-    # checkout = WebDriverWait(driver, 20).until(
-    #   EC.presence_of_element_located((By.XPATH, "/html/body/div[4]/div[1]/div/div[4]/div/div/a"))
-    # )
-    
-    sleep(3)
-    
-    print('after sleep')
-    
-    checkout = driver.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[4]/div/div/a')
+    checkout = WebDriverWait(driver, 20).until(
+      EC.presence_of_element_located((By.CLASS_NAME, "cta-large"))
+    )
     print('did it find checkout')
-    print(checkout.get_attribute("href"))
+    print(checkout.text)
     checkout.click()
     
     print('Checkout')
