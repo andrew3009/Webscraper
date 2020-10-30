@@ -39,13 +39,14 @@ def checkoutLoop():
     pre.click()
     print('Added to Basket')
     
-    print(driver.find_elements_by_class_name('purchase-confirmation-modal'))
-    print(driver.find_elements_by_class_name('secure-checkout'))
-    
-    checkout = WebDriverWait(driver, 200).until(
-      EC.presence_of_element_located((By.CLASS_NAME, "secure-checkout"))
+    checkoutPage = WebDriverWait(driver, 20).until(
+      EC.presence_of_element_located((By.XPATH, "/html/body/div[5]/div/div[2]/div/div/a[2]"))
     )
-    print(checkout.text)
+    
+    print('checkoutPage')
+
+    checkout = driver.find_element_by_xpath('/html/body/div[5]/div/div[2]/div/div/a[2]')
+    
     checkout.click()
     print('Checkout')
     print('FINISHED')
