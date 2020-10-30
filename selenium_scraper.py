@@ -46,7 +46,7 @@ def checkoutLoop():
     print('Checkout')
     print('FINISHED')
   except:
-    driver.quit()
+    checkoutLoop()
 
 def loopFunc():
   try:
