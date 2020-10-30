@@ -39,13 +39,11 @@ def checkoutLoop():
     pre.click()
     print('Added to Basket')
     
-    checkoutPage = WebDriverWait(driver, 20).until(
+    checkout = WebDriverWait(driver, 20).until(
       EC.presence_of_element_located((By.XPATH, "/html/body/div[5]/div/div[2]/div/div/a[2]"))
     )
     
-    print('checkoutPage')
-
-    checkout = driver.find_element_by_xpath('/html/body/div[5]/div/div[2]/div/div/a[2]')
+    print('checkout')
     
     checkout.click()
     print('Checkout')
