@@ -43,6 +43,8 @@ def checkoutLoop():
     #   EC.presence_of_element_located((By.XPATH, "/html/body/div[4]/div[1]/div/div[4]/div/div/a"))
     # )
     
+    sleep(3)
+    
     checkout = driver.find_element_by_xpath('/html/body/div[4]/div[1]/div/div[4]/div/div/a')
     checkout.click()
     
