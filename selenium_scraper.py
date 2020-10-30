@@ -18,14 +18,34 @@ def loopFunc():
 
     sections = primary.find_elements_by_id('contentPanels2')
     for section in sections:
-      button = section.find_elements_by_class_name('sectionButton')
+      button = section.find_element_by_class_name('sectionButton')
       a = button.find_element_by_tag_name('a')
+      print(a.get_attribute("href"))
 
-      if 'digital' in a.get_attribute("href"):
+      if 'dualsense' in a.get_attribute("href"):
+        print('Found DualSense')
         a.click()
+        checkoutLoop()
   except:
     print('Out of Stock')
     driver.refresh()
     loopFunc()
+
+def checkoutLoop():
+  try:
+    pre = WebDriverWait(driver, 20).until(
+      EC.presence_of_element_located((By.CLASS_NAME, "addToBasket"))
+    )
+    pre.click()
+    print('Added to Basket')
+    
+    checkout = WebDriverWait(driver, 20).until(
+      EC.presence_of_element_located((By.CLASS_NAME, "secure-checkout"))
+    )
+    checkout.click()
+    print('Checkout')
+    print('FINISHED')
+  except:
+    driver.quit()
 
 loopFunc()
